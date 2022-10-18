@@ -21,10 +21,10 @@ driver.get(URL)
 
 
 username = driver.find_element(By.ID, "id_username")
-username.send_keys("301583175")
+username.send_keys("my_id")
 
 password = driver.find_element(By.ID, "id_password")
-password.send_keys("301583175")
+password.send_keys("my_id")
 
 submit = driver.find_element(By.CLASS_NAME, "btn")
 submit.click()

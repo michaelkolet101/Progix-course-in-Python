@@ -44,8 +44,8 @@ minus = Button(screen, text='-', height=3, width=5, bg="white", font=("ariel", "
 plus = Button(screen, text='+', height=3, width=5, bg="white", font=("ariel", "15"),command=lambda:prss('+'))
 multi = Button(screen, text='x', height=3, width=5, bg="white",font=("ariel", "15"),command=lambda:prss('*'))
 div = Button(screen, text='/', height=3, width=5, bg="white", font=("ariel", "15"),command=lambda:prss('/'))
-equal = Button(screen, text='=', height=3, width=5, bg="white", font=("ariel", "15"))
-clr = Button(screen, text='C', height=3, width=5,bg="white", font=("ariel", "15"))
+equal = Button(screen, text='=', height=3, width=5, bg="white", font=("ariel", "15"), command=lambda:prss_eqval())
+clr = Button(screen, text='C', height=3, width=5,bg="white", font=("ariel", "15"),command=lambda:prss(''))
 dot = Button(screen, text='.', height=3, width=5, bg="white", font=("ariel", "15") ,command=lambda:prss('') )
 
 #######################################

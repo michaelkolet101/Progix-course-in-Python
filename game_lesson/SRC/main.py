@@ -16,9 +16,9 @@ backgruond = pygame.image.load(r"C:\Users\micha\Desktop\game_lesson\IMAGES\bg.jp
 backgruond = pygame.transform.scale(backgruond, (500, 500))
 
 # הדמות במשחק
-bird = pygame.image.load(r"C:\Users\micha\Desktop\game_lesson\IMAGES\example.JPG").convert()
+bird = pygame.image.load(r"C:\Users\micha\Desktop\game_lesson\IMAGES\example.png").convert()
 bird = pygame.transform.scale(bird, (100, 100))
-
+bird.set_colorkey('black')
 
 finish = False
 
@@ -29,9 +29,11 @@ while finish == False:
 
     screen.blit(backgruond, (0,0))
     #screen.fill('red')
-
-    screen.blit(bird, (250,250))
-    pygame.draw.circle(screen, 'white', [circle_x, circle_y], 50, 0)
+    
+    screen.blit(bird, (circle_x, circle_y))
+    screen.blit(bird, (circle_x + 50, circle_y + 50))
+    screen.blit(bird, (circle_x + 100, circle_y + 100))
+    #pygame.draw.circle(screen, 'white', [circle_x, circle_y], 50, 0)
 
     
     if circle_x > 500:
@@ -53,15 +55,20 @@ while finish == False:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_RIGHT:
                 circle_x += 20
-
+                
+                
             if event.key == pygame.K_LEFT:
                 circle_x -= 20
+                
 
             if event.key == pygame.K_UP:
                 circle_y -= 20
+                
 
             if event.key == pygame.K_DOWN:
                 circle_y += 20
+                
+            pygame.key.set_repeat(100)
 
             
 

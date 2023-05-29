@@ -1,6 +1,8 @@
 import pygame
 import random
 from Character import Slime
+from bullet import Bullet
+
 import pygame.sprite
 
 pygame.init()
@@ -19,22 +21,35 @@ backgruond = pygame.image.load(r"C:\Users\micha\Desktop\game_lesson\IMAGES\bg.jp
 # # שינוי גודל התמונה שיהיה כמו הגודל של מסך המשחק
 backgruond = pygame.transform.scale(backgruond, (500, 500))
 
+
+
+
+
+
 all_sprites_list = pygame.sprite.Group()
+
+bulls_list = []
+bulls_list2 = []
 
 c1 = Slime()
 c2 = Slime()
 
+
 c1.image = c1.diraction()
 
-c1.rect.x = 250
-c1.rect.y = 250
+c1.set_pos(50, 300)
+c2.set_pos(350, 300)
+
+
+
 
 all_sprites_list.add(c1)
 all_sprites_list.add(c2)
 
+
 finish = False
 
-
+f = False
 while finish == False:
 
     for event in pygame.event.get():
@@ -47,16 +62,43 @@ while finish == False:
                 c1.move(5, 0)
             if event.key == pygame.K_LEFT:
                 c1.move(-5, 0)
-        
+            if event.key == pygame.K_DOWN:
+                c1.move(0, 5)
+            if event.key == pygame.K_d:
+                c2.move(5, 0)
+            if event.key == pygame.K_a:
+                c2.move(-5, 0)
+            if event.key == pygame.K_s:
+                c2.move(0, 5)
+            if event.key == pygame.K_w:
+                c2.isJump = True
+            if event.key == pygame.K_f:
+                b = c2.shoot()
+                bulls_list.append(b)
+                all_sprites_list.add(b)
+
+            if event.key == pygame.K_l:
+                b = c1.shoot()
+                b.image = b.diraction()
+                bulls_list2.append(b)
+                all_sprites_list.add(b)
+
                 
     screen.blit(backgruond, (0,0))
-    
-    
+
     if pygame.sprite.collide_rect(c1, c2) == True:
         print("hello")
-    
-    c2.move(0,12)
+
+    for i in bulls_list:
+        if i.rect.x != -100:
+            i.move(-5, 0)
+
+    for i in bulls_list2:
+        if i.rect.x != 600:
+            i.move(5, 0)
+
     c1.jump()
+    c2.jump()
     pygame.key.set_repeat(30) 
     all_sprites_list.draw(screen)  
     clock.tick(REFRESH_RATE)

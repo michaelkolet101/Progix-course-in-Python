@@ -1,4 +1,5 @@
 import pygame
+from bullet import Bullet
 import random
 import time
 
@@ -6,12 +7,13 @@ IMAGE_SIZE = (100, 100)
 
 class Slime(pygame.sprite.Sprite):
 
-    def __init__(self):
+    def __init__(self, img=r"C:\Users\micha\Desktop\game_lesson\IMAGES\example.png"):
         super().__init__()
         self.IMAGE_SIZE = (100, 100)
-        self.image = pygame.image.load(r"C:\Users\micha\Desktop\game_lesson\IMAGES\example.png").convert()
-        self.image = pygame.transform.scale(self.image, IMAGE_SIZE)
-        #self.image.set_colorkey('black')
+        self.image = pygame.image.load(img).convert()
+        self.image = pygame.transform.scale(self.image, self.IMAGE_SIZE)
+        self.image.set_colorkey("black")
+        self.my_list = pygame.sprite.Group()
 
         self.rect = self.image.get_rect(center=(10,10))
         
@@ -23,16 +25,20 @@ class Slime(pygame.sprite.Sprite):
 
     def get_pos(self):
         return self.rect.x, self.rect.y
-    
+    def set_pos(self, x, y):
+        self.rect.x = x
+        self.rect.y = y
     
     def move(self, new_x, new_y):
         self.rect.x += new_x
         self.rect.y += new_y
 
-        if self.rect.x > 500 or self.rect.y > 500:
-            self.rect.x = random.randint(1,499)
-            self.rect.y = 0
-        
+        # if self.rect.x > 500 or self.rect.y > 500:
+        #     self.rect.x = random.randint(1,499)
+        #     self.rect.y = 0
+        #
+
+
 
     def jump(self):
         # Check if mario is jumping and then execute the
@@ -62,3 +68,11 @@ class Slime(pygame.sprite.Sprite):
     
     def get_image_size(self):
         return self.IMAGE_SIZE
+
+    def shoot(self):
+        bullet = Bullet()
+
+        bullet.set_pos(self.rect.x, self.rect.y + 50)
+        return bullet
+
+

@@ -23,29 +23,29 @@ backgruond = pygame.transform.scale(backgruond, (500, 500))
 
 
 
-
-
-
 all_sprites_list = pygame.sprite.Group()
+
+
 
 bulls_list = []
 bulls_list2 = []
 
 c1 = Slime()
 c2 = Slime()
-
+astro = Slime(r"C:\Users\micha\Desktop\Progix-course-in-Python\game_lesson\IMAGES\astroid.png")
 
 c1.image = c1.diraction()
 
 c1.set_pos(50, 300)
 c2.set_pos(350, 300)
+astro.set_pos(250 , 20)
 
 
 
 
 all_sprites_list.add(c1)
 all_sprites_list.add(c2)
-
+all_sprites_list.add(astro)
 
 finish = False
 
@@ -99,8 +99,10 @@ while finish == False:
 
     c1.jump()
     c2.jump()
-    pygame.key.set_repeat(30) 
+    pygame.key.set_repeat(30)
+
     all_sprites_list.draw(screen)  
+
     clock.tick(REFRESH_RATE)
     
     pygame.display.update()

@@ -71,4 +71,5 @@ class Slime(pygame.sprite.Sprite):
         bullet.set_pos(self.rect.x, self.rect.y + 50)
         return bullet
 
-
+    def is_clicked(self):
+        return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())

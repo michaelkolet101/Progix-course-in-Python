@@ -31,7 +31,6 @@ bulls_list = []
 bulls_list2 = []
 
 
-hdmuuuuot_shhhlyy = Slime(r"C:\Users\micha\Desktop\Progix-course-in-Python\game_lesson\IMAGES\flappy_bird.jpg")
 
 c1 = Slime()
 c2 = Slime()
@@ -42,15 +41,11 @@ c1.image = c1.diraction()
 c1.set_pos(50, 300)
 c2.set_pos(350, 300)
 astro.set_pos(250 , 20)
-hdmuuuuot_shhhlyy.set_pos(300,300)
-
-
-
 
 all_sprites_list.add(c1)
 all_sprites_list.add(c2)
 all_sprites_list.add(astro)
-all_sprites_list.add(hdmuuuuot_shhhlyy)
+
 
 finish = False
 
@@ -92,15 +87,30 @@ while finish == False:
     screen.blit(backgruond, (0,0))
 
     if pygame.sprite.collide_rect(c1, astro) == True:
-        print("hello")
+        all_sprites_list.remove(c1)
 
     for i in bulls_list:
+        if pygame.sprite.collide_rect(i, c1) == True:
+            all_sprites_list.remove(c1)
+            all_sprites_list.remove(i)
         if i.rect.x != -100:
             i.move(-5, 0)
+        else:
+            bulls_list.remove(i)
 
     for i in bulls_list2:
-        if i.rect.x != 600:
+        if pygame.sprite.collide_rect(i, c2) == True:
+            all_sprites_list.remove(c2)
+            all_sprites_list.remove(i)
+        if i.rect.x < 500:
             i.move(5, 0)
+        else:
+            bulls_list2.remove(i)
+
+    if c2.is_clicked() == True:
+        print("hii")
+
+
 
     if pygame.sprite.collide_rect(c1, c2) == True:
         print("hello")

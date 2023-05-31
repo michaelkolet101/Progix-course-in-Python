@@ -86,7 +86,7 @@ while finish == False:
                 
     screen.blit(backgruond, (0,0))
 
-    if pygame.sprite.collide_rect(c1, c2) == True:
+    if pygame.sprite.collide_rect(c1, astro) == True:
         print("hello")
 
     for i in bulls_list:
@@ -97,8 +97,12 @@ while finish == False:
         if i.rect.x != 600:
             i.move(5, 0)
 
+    if pygame.sprite.collide_rect(c1, c2) == True:
+        print("hello")
+
     c1.jump()
     c2.jump()
+    astro.move(0, 5)
     pygame.key.set_repeat(30)
 
     all_sprites_list.draw(screen)  

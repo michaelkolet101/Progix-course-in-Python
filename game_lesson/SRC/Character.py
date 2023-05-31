@@ -16,10 +16,7 @@ class Slime(pygame.sprite.Sprite):
         self.my_list = pygame.sprite.Group()
 
         self.rect = self.image.get_rect(center=(10,10))
-        
-
-
-
+    
         self.isJump = False
         self.jumpCount = 10 
 
@@ -34,6 +31,7 @@ class Slime(pygame.sprite.Sprite):
         self.rect.x += new_x
         self.rect.y += new_y
 
+        self.center()
 
 
 
@@ -41,7 +39,7 @@ class Slime(pygame.sprite.Sprite):
     def jump(self):
         # Check if mario is jumping and then execute the
         # jumping code.
-        if self.isJump:
+        if self.isJump == True:
             if self.jumpCount >= -10:
                 neg = 1
                 if self.jumpCount < 0:
@@ -59,7 +57,7 @@ class Slime(pygame.sprite.Sprite):
             self.rect.y = 0
             self.rect.x = random.randint(1, 499)
         if self.rect.x > 600 or self.rect.x < -100:
-            self.rect.x = 250
+            self.rect.x = 0
 
     def diraction(self):
         return pygame.transform.flip(self.image, True, False)

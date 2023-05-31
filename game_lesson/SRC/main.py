@@ -30,6 +30,9 @@ all_sprites_list = pygame.sprite.Group()
 bulls_list = []
 bulls_list2 = []
 
+
+hdmuuuuot_shhhlyy = Slime(r"C:\Users\micha\Desktop\Progix-course-in-Python\game_lesson\IMAGES\flappy_bird.jpg")
+
 c1 = Slime()
 c2 = Slime()
 astro = Slime(r"C:\Users\micha\Desktop\Progix-course-in-Python\game_lesson\IMAGES\astroid.png")
@@ -39,6 +42,7 @@ c1.image = c1.diraction()
 c1.set_pos(50, 300)
 c2.set_pos(350, 300)
 astro.set_pos(250 , 20)
+hdmuuuuot_shhhlyy.set_pos(300,300)
 
 
 
@@ -46,6 +50,7 @@ astro.set_pos(250 , 20)
 all_sprites_list.add(c1)
 all_sprites_list.add(c2)
 all_sprites_list.add(astro)
+all_sprites_list.add(hdmuuuuot_shhhlyy)
 
 finish = False
 

@@ -73,3 +73,20 @@ class Slime(pygame.sprite.Sprite):
 
     def is_clicked(self):
         return pygame.mouse.get_pressed()[0] and self.rect.collidepoint(pygame.mouse.get_pos())
+
+    def moush_over(self):
+        if self.rect.collidepoint(pygame.mouse.get_pos()):
+            return True
+        return False
+
+    def big_img(self):
+        self.image = pygame.transform.scale(self.image, (200, 200))
+
+    def small_img(self):
+        self.image = pygame.transform.scale(self.image, self.IMAGE_SIZE)
+
+    def up_and_doun(self):
+        if self.moush_over() == True:
+            self.big_img()
+        else:
+            self.small_img()

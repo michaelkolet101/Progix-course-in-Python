@@ -107,6 +107,7 @@ while finish == False:
         else:
             bulls_list2.remove(i)
 
+# אם לוחצים על האסטרואיד עם העכבר מודפס היי
     if c2.is_clicked() == True:
         print("hii")
 
@@ -120,6 +121,10 @@ while finish == False:
     astro.move(0, 5)
     pygame.key.set_repeat(30)
 
+# אם העכבר עובר מעל האסטרואיד הוא גדל
+    astro.up_and_doun()
+
+# זה חשוב להדפיס על מסך המשחק את כל האובייקטים
     all_sprites_list.draw(screen)  
 
     clock.tick(REFRESH_RATE)

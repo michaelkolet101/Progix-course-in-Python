@@ -118,6 +118,7 @@ while finish == False:
 
     c1.jump()
     c2.jump()
+
     astro.move(0, 5)
     pygame.key.set_repeat(30)
 

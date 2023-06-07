@@ -35,16 +35,21 @@ bulls_list2 = []
 c1 = Slime()
 c2 = Slime()
 astro = Slime(r"C:\Users\micha\Desktop\Progix-course-in-Python\game_lesson\IMAGES\astroid.png")
+btn = Slime(r"C:\Users\micha\Desktop\Progix-course-in-Python\game_lesson\IMAGES\btn.png")
+
 
 c1.image = c1.diraction()
+
 
 c1.set_pos(50, 300)
 c2.set_pos(350, 300)
 astro.set_pos(250 , 20)
+btn.set_pos(30, 30)
 
 all_sprites_list.add(c1)
 all_sprites_list.add(c2)
 all_sprites_list.add(astro)
+all_sprites_list.add(btn)
 
 
 finish = False
@@ -115,6 +120,10 @@ while finish == False:
 
     if pygame.sprite.collide_rect(c1, c2) == True:
         print("hello")
+
+
+
+
 
     c1.jump()
     c2.jump()
